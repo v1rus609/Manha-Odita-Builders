@@ -1,0 +1,283 @@
+/* home.css */
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Theme */
+:root {
+  --nav-h: 100px;
+  --dark: #131313;
+  --accent: #f4a261;
+}
+
+/* Body and Layout */
+body {
+  font-family: helvetica, Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Loader Styling */
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  animation: breatheEffect 5s ease-in-out forwards;
+}
+.page-wrap {
+  display: none;
+}
+
+/* Breathing Animation */
+@keyframes breatheEffect {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Loader Image */
+.loader-image {
+  width: 350px;
+  height: auto;
+}
+
+/* Main Content */
+.main-content {
+  text-align: center;
+  margin-top: calc(var(--nav-h) + 20px);
+  display: none;
+}
+
+.main-content h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.main-content p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--nav-h);
+    padding: 20px 3rem;
+    background-color: #00000078;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 15px rgb(0 0 0 / 46%);
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 1.5s ease-in-out, opacity 1s ease-in-out;
+}
+
+.navbar.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.logo-img {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+/* Menu Icon Button */
+.menu-icon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 36px;
+  height: 34px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.menu-icon .line {
+  display: block;
+  height: 4px;
+  width: 30px;
+  background-color: #fff;
+  transition: transform 0.75s ease, opacity 0.25s ease;
+  border-radius: 4px;
+}
+
+/* Hamburger -> X (on click) */
+.menu-icon.active .line:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.menu-icon.active .line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.active .line:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Overlay */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 9998;
+}
+
+.menu-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Side Menu */
+.side-menu {
+  position: fixed;
+  top: var(--nav-h);
+  right: 0;
+  width: min(500px, 85vw);
+  height: calc(100vh - var(--nav-h));
+  padding: 26px 24px;
+  background-color: #eeeeee;
+  transform: translateX(110%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 1.5s ease, opacity 1.5s ease;
+  z-index: 9999;
+}
+
+.side-menu.open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.side-menu ul li {
+  margin-bottom: 26px;
+    opacity: 0;
+  transform: translateX(18px);
+  transition: transform 0.45s ease, opacity 0.45s ease;
+}
+
+.side-menu.open ul li {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+
+.side-menu ul li a {
+  color: #3b3b3b;
+  text-decoration: none;
+  font-size: 1.6rem;
+  position: relative;
+  padding-bottom: 6px;
+  display: inline-block; /* helps transform look smoother */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Active link (shows which section/page you’re on) */
+.side-menu ul li a.active {
+  color: var(--accent);
+}
+
+/* Keep underline visible for active link */
+.side-menu ul li a.active::after {
+  transform: scaleX(1);
+}
+
+/* Underline */
+.side-menu ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.side-menu ul li a:hover {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.side-menu ul li a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Responsive tweak */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 18px 1.2rem;
+  }
+  .logo-img {
+    height: 52px;
+  }
+}
+
+
+/* ---------- Custom Scrollbar (uses same accent as link hover) ---------- */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) rgba(0, 0, 0, 0.08);
+}
+
+/* Chrome / Edge / Safari */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 999px;
+  border: 2px solid rgba(0, 0, 0, 0.08); /* makes it look premium */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent); /* keep same as link hover */
+}
+
+.side-menu {
+  overflow-y: auto;
+}
