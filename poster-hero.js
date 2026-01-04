@@ -60,7 +60,7 @@
    ------------------------ */
 
 // start moving early, finish smoothly
-const imgMove = smoothstep(0.10, 0.55, p);
+const imgMove = smoothstep(0.10, 0.45, p);
 
 // start lower -> end at 0 (original spot)
 const imgStartY = 600;  // increase if you want it to come from further down
