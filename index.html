@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manha Odita Builders</title>
 
-  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="poster-hero.css" />
   <link rel="stylesheet" href="hero.css" />
+  <link rel="stylesheet" href="home.css" />
+  
 
   <link rel="icon" type="image/png" href="icon.png" />
 </head>
@@ -88,11 +90,105 @@
       </div>
     </section>
 
+	<!-- 3D SCROLL HERO SECTION -->
+<!-- POSTER HERO (title top, cutout image below) -->
+<section class="poster-hero" id="posterHero">
+  <div class="poster-hero__inner">
+    <h2 class="poster-hero__title">
+      A NEW STANDARD OF<br />
+      PREMIUM LIVING
+    </h2>
+  <div class="hero__stats" id="heroStats">
+  <div class="stat">
+    <div class="stat__num" data-target="10" data-suffix="M+">0</div>
+    <div class="stat__label">Total Area Built<br><span>(Million sft.)</span></div>
+  </div>
+
+  <div class="stat">
+    <div class="stat__num" data-target="25" data-suffix="+">0</div>
+    <div class="stat__label">Projects Delivered</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat__num" data-target="12" data-suffix="+">0</div>
+    <div class="stat__label">Years of Trust</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat__num" data-target="8" data-suffix="+">0</div>
+    <div class="stat__label">Prime Locations</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat__num" data-target="350" data-suffix="+">0</div>
+    <div class="stat__label">Happy Families</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat__num" data-target="24" data-suffix="/7">0</div>
+    <div class="stat__label">Customer Support</div>
+  </div>
+</div>
+    <div class="poster-hero__media" aria-hidden="true">
+
+
+
+      <!-- Use a PNG with transparent background for best “cutout” look -->
+      <img
+        class="poster-hero__img"
+        src="assets/landmark.png"
+        alt=""
+        loading="lazy"
+      />
+
+      <div class="poster-hero__shine"></div>
+    </div>
+  </div>
+
+</section>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <video
+        class="hero__video"
+        id="heroVideo"
+        muted
+        loop
+        playsinline
+        preload="none"
+        poster="assets/hero-poster.jpg"
+      >
+        <!-- NOTE: no src here (loads after loader). -->
+        <source data-src="assets/hero.mp4" type="video/mp4" />
+      </video>
+
+      <div class="hero__overlay"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">Manha Odita Builders</p>
+
+        <h1 class="hero__title">
+          PREMIUM LIVING,<br />
+          BUILT WITH TRUST.
+        </h1>
+
+        <p class="hero__subtitle">
+          Thoughtfully designed homes and investments, crafted for modern Dhaka living.
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="projects.html">View Projects</a>
+          <a class="btn btn--ghost" href="landowner.html">Become a Land Partner</a>
+        </div>
+      </div>
+    </section>
+
     <!-- Next sections will go here -->
 
   </main>
 
-  <script src="home.js" defer></script>
+  <script src="poster-hero.js" defer></script>
   <script src="hero.js" defer></script>
+  <script src="home.js" defer></script>
 </body>
 </html>
