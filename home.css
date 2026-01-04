@@ -21,21 +21,34 @@ body {
 }
 
 /* Loader Styling */
-.loader-wrapper {
+.loader-wrapper{
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(255, 255, 255, 0.8);
+  inset: 0;
+  background-color: rgba(255,255,255,0.92);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10000;
-  animation: breatheEffect 5s ease-in-out forwards;
+  opacity: 1;
+  transition: opacity 0.6s ease;
 }
-.page-wrap {
-  display: none;
+
+.loader-wrapper.hide{
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* Page reveal (smooth instead of display:none) */
+.page-wrap{
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease;
+}
+
+.page-wrap.show{
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Breathing Animation */
@@ -47,7 +60,7 @@ body {
 
 /* Loader Image */
 .loader-image {
-  width: 350px;
+  width: 250px;
   height: auto;
 }
 
@@ -142,7 +155,8 @@ body {
 .menu-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgb(0 0 0 / 67%);
+  backdrop-filter: blur(5px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;

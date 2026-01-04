@@ -92,6 +92,7 @@
   font-size: clamp(2.4rem, 4vw, 4rem);
   line-height: 1.05;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .hero__subtitle {
