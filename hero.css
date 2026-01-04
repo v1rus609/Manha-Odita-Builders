@@ -183,5 +183,7 @@
   .hero__subtitle {
     text-align: left;
 }
-  
+  .hero__title {
+    text-align: left;
+}
 }

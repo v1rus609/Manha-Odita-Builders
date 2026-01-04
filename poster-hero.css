@@ -28,7 +28,7 @@
 /* Title (big, poster style) */
 .poster-hero__title {
   margin-bottom: clamp(-40px, -5vw, -15px);
-  font-size: clamp(1.4rem, 5vw, 3rem);
+  font-size: clamp(1.6rem, 5vw, 3rem);
   line-height: 0.92;
   font-weight: 900;
   letter-spacing: -0.02em;
@@ -157,7 +157,7 @@
 .stat__num{
   font-weight: 900;
   letter-spacing: -0.02em;
-  font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+  font-size: clamp(1.5rem, 1.8vw, 1.6rem);
   color: var(--accent);
   line-height: 1.05;
 }
