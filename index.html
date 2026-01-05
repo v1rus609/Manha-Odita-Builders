@@ -8,7 +8,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 
-
+  <link rel="stylesheet" href="projects.css" />
   <link rel="stylesheet" href="poster-hero.css" />
   <link rel="stylesheet" href="hero.css" />
   <link rel="stylesheet" href="home.css" />
@@ -152,45 +152,76 @@
 </section>
 
     <!-- HERO SECTION -->
-    <section class="hero" id="hero">
-      <video
-        class="hero__video"
-        id="heroVideo"
-        muted
-        loop
-        playsinline
-        preload="none"
-        poster="assets/hero-poster.jpg"
-      >
-        <!-- NOTE: no src here (loads after loader). -->
-        <source data-src="assets/hero.mp4" type="video/mp4" />
-      </video>
+<section class="projects" id="projects">
+  <div class="projects__inner">
+    <div class="projects__head">
+            <img
+        class="poster-hero2__img"
+        src="assets/projects/projects.png"
+        alt=""
+        loading="lazy"
+      />
+      <p class="projects__sub">A curated selection of our latest developments across Dhaka.</p>
 
-      <div class="hero__overlay"></div>
-
-      <div class="hero__content">
-        <p class="hero__eyebrow">Manha Odita Builders</p>
-
-        <h1 class="hero__title">
-          PREMIUM LIVING,<br />
-          BUILT WITH TRUST.
-        </h1>
-
-        <p class="hero__subtitle">
-          Thoughtfully designed homes and investments, crafted for modern Dhaka living.
-        </p>
-
-        <div class="hero__cta">
-          <a class="btn btn--primary" href="projects.html">View Projects</a>
-          <a class="btn btn--ghost" href="landowner.html">Become a Land Partner</a>
-        </div>
+      <div class="projects__controls">
+        <button class="pbtn" id="projPrev" aria-label="Previous project">‹</button>
+        <button class="pbtn" id="projNext" aria-label="Next project">›</button>
       </div>
-    </section>
+    </div>
+
+    <div class="projects__trackWrap">
+      <div class="projects__track" id="projectsTrack">
+        <!-- Slide 1 -->
+        <a class="projectCard" href="projects.html">
+          <img class="projectCard__img" src="assets/projects/p1.png" alt="Project 1">
+          <div class="projectCard__overlay"></div>
+          <div class="projectCard__text">
+            <p class="projectCard__kicker">Mirpur</p>
+            <h3 class="projectCard__name">Manha Heights</h3>
+          </div>
+        </a>
+
+        <!-- Slide 2 -->
+        <a class="projectCard" href="projects.html">
+          <img class="projectCard__img" src="assets/projects/p2.png" alt="Project 2">
+          <div class="projectCard__overlay"></div>
+          <div class="projectCard__text">
+            <p class="projectCard__kicker">Gulshan</p>
+            <h3 class="projectCard__name">Odita 2</h3>
+          </div>
+        </a>
+
+        <!-- Slide 3 -->
+        <a class="projectCard" href="projects.html">
+          <img class="projectCard__img" src="assets/projects/p3.png" alt="Project 3">
+          <div class="projectCard__overlay"></div>
+          <div class="projectCard__text">
+            <p class="projectCard__kicker">Explore</p>
+            <h3 class="projectCard__name">More</h3>
+          </div>
+        </a>
+		<!-- Slide 4 -->
+		        <a class="projectCard" href="projects.html">
+          <img class="projectCard__img" src="assets/projects/p3.png" alt="Project 3">
+          <div class="projectCard__overlay"></div>
+          <div class="projectCard__text">
+            <p class="projectCard__kicker">Explore</p>
+            <h3 class="projectCard__name">More</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="projects__dots" id="projectsDots" aria-label="Project slider dots"></div>
+  </div>
+</section>
+
 
     <!-- Next sections will go here -->
 
   </main>
 
+  <script src="projects.js" defer></script>
   <script src="poster-hero.js" defer></script>
   <script src="hero.js" defer></script>
   <script src="home.js" defer></script>
