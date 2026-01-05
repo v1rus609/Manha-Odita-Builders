@@ -1,4 +1,4 @@
-// poster-hero.js
+// poster-hero.js (smooth + not laggy)
 (() => {
   const section = document.getElementById("posterHero");
   if (!section) return;
@@ -7,129 +7,99 @@
   const media = section.querySelector(".poster-hero__media");
 
   const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-  if (reduceMotion) {
-    if (title) {
-      title.style.opacity = 1;
-      title.style.transform = "translateY(0)";
-      title.style.filter = "blur(0)";
-    }
-    if (media) {
-      media.style.opacity = 1;
-      media.style.filter = "blur(0)";
-    }
-    return;
-  }
+  if (reduceMotion) return;
 
   section.classList.add("is-scroll");
 
   const clamp01 = (n) => Math.min(1, Math.max(0, n));
   const lerp = (a, b, t) => a + (b - a) * t;
-
   const smoothstep = (a, b, x) => {
     const t = clamp01((x - a) / (b - a));
     return t * t * (3 - 2 * t);
   };
 
-  let ticking = false;
   let active = false;
+  let raf = 0;
 
-  // Only animate when near view (performance)
+  // tiny rounding without toFixed spam
+  const r2 = (n) => Math.round(n * 100) / 100;
+  const r3 = (n) => Math.round(n * 1000) / 1000;
+
+  const update = () => {
+    raf = 0;
+    if (!active) return;
+
+    const rect = section.getBoundingClientRect();
+    const vh = window.innerHeight;
+
+    // if it's far away, skip (extra safety)
+    if (rect.bottom < -250 || rect.top > vh + 250) return;
+
+    const p = clamp01((vh - rect.top) / (vh + rect.height));
+
+    /* ------------------------
+       IMAGE: rise to original spot (no opacity/blur)
+       ------------------------ */
+    const imgMove = smoothstep(0.10, 0.45, p);
+
+    const imgStartY = 600; // you set this - keep if you like the effect
+    const imgY = lerp(imgStartY, 0, imgMove);
+
+    const rx = lerp(10, 0, imgMove);
+    const ry = lerp(-8, 0, imgMove);
+    const s  = lerp(0.985, 1.0, imgMove);
+
+    if (media) {
+      media.style.transform =
+        `translate3d(0, ${r2(imgY)}px, 0) rotateX(${r2(rx)}deg) rotateY(${r2(ry)}deg) scale(${r3(s)})`;
+      media.style.opacity = "1";
+      media.style.filter = "none";
+    }
+
+    /* ------------------------
+       TITLE: appear later, rise up, fade out later
+       ------------------------ */
+    const titleIn = smoothstep(0.10, 0.40, p);
+    const titleHold = smoothstep(0.55, 0.70, p);
+    const titleOut = 1 - smoothstep(0.78, 0.98, p);
+
+    const titleOpacity = Math.min(1, titleIn + titleHold * 0.25) * titleOut;
+
+    const startY = 350;
+    const y = lerp(startY, 0, titleIn);
+
+    if (title) {
+      title.style.opacity = r3(titleOpacity);
+      title.style.transform = `translate3d(0, ${r2(y)}px, 0)`;
+      title.style.visibility = titleOpacity < 0.02 ? "hidden" : "visible";
+
+      // ✅ blur OFF (fastest)
+      title.style.filter = "none";
+
+      // If you REALLY want a tiny blur only at the start (still ok):
+      // const blurT = smoothstep(0.10, 0.18, p);
+      // title.style.filter = `blur(${r2(lerp(10, 0, blurT))}px)`;
+    }
+  };
+
+  const requestUpdate = () => {
+    if (!active) return;
+    if (raf) return;
+    raf = requestAnimationFrame(update);
+  };
+
+  // Activate only when near viewport
   const io = new IntersectionObserver(
     (entries) => {
       active = !!entries[0]?.isIntersecting;
-      if (active) update();
+      if (active) requestUpdate();
     },
-    { rootMargin: "200px 0px", threshold: 0.01 }
+    { rootMargin: "250px 0px", threshold: 0.01 }
   );
   io.observe(section);
 
-  function update() {
-    if (!active) {
-      ticking = false;
-      return;
-    }
-
-    const r = section.getBoundingClientRect();
-    const vh = window.innerHeight;
-
-    // progress 0..1 while passing through view
-    const p = clamp01((vh - r.top) / (vh + r.height));
-
-/* ------------------------
-   IMAGE: moves up to its original spot (no blur/opacity)
-   ------------------------ */
-
-// start moving early, finish smoothly
-const imgMove = smoothstep(0.10, 0.45, p);
-
-// start lower -> end at 0 (original spot)
-const imgStartY = 600;  // increase if you want it to come from further down
-const imgY = lerp(imgStartY, 0, imgMove);
-
-// optional: keep a tiny 3D settling effect (remove if you want only up/down)
-const rx = lerp(10, 0, imgMove);
-const ry = lerp(-8, 0, imgMove);
-const s  = lerp(0.985, 1.0, imgMove);
-
-if (media) {
-  media.style.transform =
-    `translateY(${imgY.toFixed(2)}px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale(${s.toFixed(3)})`;
-
-  // make sure there is NO blur/opacity on image
-  media.style.opacity = "1";
-  media.style.filter = "none";
-}
-
-    /* ------------------------
-       2) TITLE appears later,
-          then rises UP as you scroll
-       ------------------------ */
-
-    // Title starts after image is already mostly visible
-    const titleIn = smoothstep(0.10, 0.40, p); // this controls the "rising"
-    const titleHold = smoothstep(0.55, 0.70, p); // optional hold window
-
-    // Fade out near the bottom (when next section is coming)
-    const titleOut = 1 - smoothstep(0.78, 0.98, p);
-
-    // combined opacity: fade in -> hold -> fade out
-    const titleOpacity = Math.min(1, titleIn + titleHold * 0.25) * titleOut;
-
-    // Rise up from behind: start lower, end at 0
-    const startY = 350;      // how much it's "behind" at start
-    const endY = 0;         // final position (your current position)
-    const y = lerp(startY, endY, titleIn);
-
-    if (title) {
-      title.style.opacity = titleOpacity.toFixed(3);
-      title.style.transform = `translateY(${y.toFixed(2)}px)`;
-
-      // Blur when barely visible = premium
-      const blur = lerp(10, 0, titleOpacity);
-      title.style.filter = `blur(${blur.toFixed(2)}px)`;
-
-      title.style.visibility = titleOpacity < 0.02 ? "hidden" : "visible";
-    }
-
-    ticking = false;
-  }
-
-  function onScroll() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(update);
-  }
-
-  function init() {
-    active = true;
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-  }
-
-  window.addEventListener("site:ready", init, { once: true });
-  if (document.readyState !== "loading") init();
-  else document.addEventListener("DOMContentLoaded", init, { once: true });
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", requestUpdate);
 })();
 
 
