@@ -63,3 +63,32 @@
   // Init
   updateActive();
 })();
+
+// Projects reveal on scroll (REVERSES when scrolling up)
+(() => {
+  const section = document.getElementById("projects");
+  if (!section) return;
+
+  const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+  const cards = Array.from(section.querySelectorAll(".projectCard"));
+  cards.forEach((card, i) => card.style.setProperty("--i", i));
+
+  if (reduce) {
+    section.classList.add("is-inview");
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+      section.classList.toggle("is-inview", entry.isIntersecting);
+    },
+    {
+      threshold: 0.25,
+      // helps prevent flicker near edges (tune if needed)
+      rootMargin: "0px 0px -10% 0px",
+    }
+  );
+
+  io.observe(section);
+})();

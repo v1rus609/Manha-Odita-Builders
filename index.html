@@ -8,6 +8,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 
+ <link rel="stylesheet" href="map.css" />
   <link rel="stylesheet" href="projects.css" />
   <link rel="stylesheet" href="poster-hero.css" />
   <link rel="stylesheet" href="hero.css" />
@@ -155,25 +156,20 @@
 <section class="projects" id="projects">
   <div class="projects__inner">
     <div class="projects__head">
-            <img
-        class="poster-hero2__img"
-        src="assets/projects/projects.png"
-        alt=""
-        loading="lazy"
-      />
-      <p class="projects__sub">A curated selection of our latest developments across Dhaka.</p>
+<h2 class="projects__title" data-reveal="title">PROJECTS</h2>
+<p class="projects__sub" data-reveal="sub">A curated selection of our latest developments across Dhaka.</p>
 
-      <div class="projects__controls">
-        <button class="pbtn" id="projPrev" aria-label="Previous project">‹</button>
-        <button class="pbtn" id="projNext" aria-label="Next project">›</button>
-      </div>
     </div>
 
     <div class="projects__trackWrap">
+	      <div class="projects__controls">
+        <button class="pbtn" id="projPrev" aria-label="Previous project">‹</button>
+        <button class="pbtn" id="projNext" aria-label="Next project">›</button>
+      </div>
       <div class="projects__track" id="projectsTrack">
         <!-- Slide 1 -->
         <a class="projectCard" href="projects.html">
-          <img class="projectCard__img" src="assets/projects/p1.png" alt="Project 1">
+          <img class="projectCard__img" src="assets/projects/p1.png" alt="Project 1" loading="lazy" decoding="async">
           <div class="projectCard__overlay"></div>
           <div class="projectCard__text">
             <p class="projectCard__kicker">Mirpur</p>
@@ -183,17 +179,17 @@
 
         <!-- Slide 2 -->
         <a class="projectCard" href="projects.html">
-          <img class="projectCard__img" src="assets/projects/p2.png" alt="Project 2">
+          <img class="projectCard__img" src="assets/projects/p2.png" alt="Project 2" loading="lazy" decoding="async">
           <div class="projectCard__overlay"></div>
           <div class="projectCard__text">
             <p class="projectCard__kicker">Gulshan</p>
-            <h3 class="projectCard__name">Odita 2</h3>
+            <h3 class="projectCard__name">Odita Residences</h3>
           </div>
         </a>
 
         <!-- Slide 3 -->
         <a class="projectCard" href="projects.html">
-          <img class="projectCard__img" src="assets/projects/p3.png" alt="Project 3">
+          <img class="projectCard__img" src="assets/projects/p3.png" alt="Project 3" loading="lazy" decoding="async">
           <div class="projectCard__overlay"></div>
           <div class="projectCard__text">
             <p class="projectCard__kicker">Explore</p>
@@ -202,7 +198,7 @@
         </a>
 		<!-- Slide 4 -->
 		        <a class="projectCard" href="projects.html">
-          <img class="projectCard__img" src="assets/projects/p3.png" alt="Project 3">
+          <img class="projectCard__img" src="assets/projects/p4.png" alt="Project 4" loading="lazy" decoding="async">
           <div class="projectCard__overlay"></div>
           <div class="projectCard__text">
             <p class="projectCard__kicker">Explore</p>
@@ -216,11 +212,76 @@
   </div>
 </section>
 
+<section class="map-section" id="locations">
+  <div class="map__inner">
+    <div class="map__head">
+      <h2 class="map__title" data-reveal="title">PROJECT LOCATIONS</h2>
+      <p class="map__sub" data-reveal="sub">Explore where our developments are located across Dhaka.</p>
+    </div>
+
+    <div class="map__grid" data-reveal="grid">
+      <!-- Left: list -->
+      <div class="map__list" role="tablist" aria-label="Project locations">
+        <button class="mapItem is-active" type="button"
+          data-embed="https://www.google.com/maps?q=Mirpur,+Dhaka&output=embed"
+          data-open="https://www.google.com/maps?q=Mirpur,+Dhaka"
+          role="tab" aria-selected="true">
+          <span class="mapItem__name">Manha Heights</span>
+          <span class="mapItem__meta">Mirpur</span>
+        </button>
+
+        <button class="mapItem" type="button"
+          data-embed="https://www.google.com/maps?q=Gulshan,+Dhaka&output=embed"
+          data-open="https://www.google.com/maps?q=Gulshan,+Dhaka"
+          role="tab" aria-selected="false">
+          <span class="mapItem__name">Odita Residences</span>
+          <span class="mapItem__meta">Gulshan</span>
+        </button>
+
+        <button class="mapItem" type="button"
+          data-embed="https://www.google.com/maps?q=Bashundhara,+Dhaka&output=embed"
+          data-open="https://www.google.com/maps?q=Bashundhara,+Dhaka"
+          role="tab" aria-selected="false">
+          <span class="mapItem__name">Skyline Court</span>
+          <span class="mapItem__meta">Bashundhara</span>
+        </button>
+
+        <button class="mapItem" type="button"
+          data-embed="https://www.google.com/maps?q=Dhanmondi,+Dhaka&output=embed"
+          data-open="https://www.google.com/maps?q=Dhanmondi,+Dhaka"
+          role="tab" aria-selected="false">
+          <span class="mapItem__name">Lakeview Living</span>
+          <span class="mapItem__meta">Dhanmondi</span>
+        </button>
+      </div>
+
+      <!-- Right: map -->
+      <div class="map__frameWrap">
+        <div class="map__frame" aria-label="Google Map">
+          <!-- src is set by JS when section enters view (lazy load) -->
+          <iframe
+            id="mapFrame"
+            title="Project locations map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <a class="map__open" id="mapOpen" href="#" target="_blank" rel="noopener">
+          Open in Google Maps ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- Next sections will go here -->
 
   </main>
-
+	
+	<script src="map.js" defer></script>
   <script src="projects.js" defer></script>
   <script src="poster-hero.js" defer></script>
   <script src="hero.js" defer></script>
