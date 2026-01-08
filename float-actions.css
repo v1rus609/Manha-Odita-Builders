@@ -1,0 +1,89 @@
+/* Floating contact buttons */
+.float-actions{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fab{
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: #fff;
+  background: rgb(0 0 0 / 33%);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  transform: translateZ(0);
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+
+.fab svg{
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  opacity: 0.95;
+}
+
+.fab:hover{
+  transform: translateY(-2px);
+  background: rgba(0,0,0,0.70);
+  border-color: rgba(255,255,255,0.28);
+}
+
+/* Optional subtle brand tint */
+.fab--wa{ outline: none; }
+.fab--ms{ outline: none; }
+.fab--call{ outline: none; }
+
+/* Tooltip */
+.fab__tip{
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+
+  background: rgba(0,0,0,0.72);
+  border: 1px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+.fab:hover .fab__tip{
+  opacity: 1;
+  transform: translateY(-50%) translateX(-2px);
+}
+
+/* Mobile: smaller and less intrusive */
+@media (max-width: 480px){
+  .float-actions{ right: 12px; bottom: 12px; gap: 10px; }
+  .fab{ width: 48px; height: 48px; }
+}
+.fab__icon{
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
+.fab__icon{
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  display: block;
+}

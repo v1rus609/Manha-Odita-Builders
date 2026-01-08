@@ -1,0 +1,210 @@
+/* meeting.css */
+.meeting{
+  position: relative;
+  padding: 90px 0;
+  background: #fbfbfb;
+  overflow: hidden;
+}
+
+/* subtle contour background */
+.meeting::before{
+  content:"";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(244,162,97,0.08), transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'%3E%3Cg fill='none' stroke='%239ad7ff' stroke-opacity='0.35' stroke-width='1'%3E%3Cpath d='M-20 60 C 120 10, 260 120, 420 70 S 720 120, 860 60'/%3E%3Cpath d='M-40 130 C 140 80, 280 190, 440 140 S 740 190, 900 130'/%3E%3Cpath d='M-30 210 C 130 160, 270 270, 430 220 S 730 270, 890 210'/%3E%3Cpath d='M-20 300 C 120 250, 260 360, 420 310 S 720 360, 860 300'/%3E%3Cpath d='M-40 390 C 140 340, 280 450, 440 400 S 740 450, 900 390'/%3E%3C/g%3E%3Cg fill='none' stroke='%239fe8b6' stroke-opacity='0.28' stroke-width='1'%3E%3Cpath d='M-30 95 C 140 40, 300 160, 480 100 S 760 160, 920 95'/%3E%3Cpath d='M-30 265 C 140 210, 300 330, 480 270 S 760 330, 920 265'/%3E%3Cpath d='M-30 435 C 140 380, 300 500, 480 440 S 760 500, 920 435'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.meeting__inner{
+  position: relative;
+}
+
+.meeting__card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    overflow: hidden;
+    background: #fff;
+    align-items: center;
+}
+
+.meeting__media{
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;          /* keep your card height consistent */
+}
+
+/* Top photo */
+.meeting__photo{
+  position: relative;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 2;
+}
+
+/* Sun behind (starts "hidden" lower, JS moves it) */
+.meeting__sun {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    width: clamp(200px, 22vw, 400px);
+    height: auto;
+    z-index: 1;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(140px);
+    will-change: transform;
+    opacity: 0.95;
+    filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.18));
+}
+
+/* If your photo is very bright and mix-blend-mode looks weird, remove it */
+
+
+
+.meeting__formWrap{
+  padding: 44px 44px 40px;
+}
+
+.meeting__title {
+    font-weight: 900;
+    font-size: clamp(1.6rem, 5vw, 3rem);
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: #141414;
+}
+
+/* orange underline grow */
+.meeting__title::after{
+  content:"";
+  display:block;
+  width: 0px;
+  height: 3px;
+  margin-top: 12px;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 0.8s ease;
+  transition-delay: 0.15s;
+}
+
+.meeting__form{
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.field{
+  display: grid;
+  gap: 8px;
+}
+
+.field__label{
+  font-size: 0.92rem;
+  color: rgba(0,0,0,0.72);
+  display: none; /* optional, keep placeholders like your screenshot */
+}
+
+.meeting input,
+.meeting select,
+.meeting textarea{
+  width: 100%;
+  padding: 14px 14px;
+  border: 1px solid rgba(0,0,0,0.55);
+  border-radius: 10px;
+  outline: none;
+  font: inherit;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.meeting textarea{ resize: vertical; }
+
+.meeting input:focus,
+.meeting select:focus,
+.meeting textarea:focus{
+  border-color: rgba(244,162,97,0.95);
+  box-shadow: 0 0 0 4px rgba(244,162,97,0.18);
+}
+
+.fieldRow{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.meeting__btn {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: 'Inter';
+    width: 160px;
+    font-size: clamp(0.8rem, 1vw, 1rem);
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid rgb(244 162 97);
+    background: #f4a261;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.meeting__btn:hover{
+  color:#f4a261;
+  transform: translateY(-2px);
+  border-color: #f4a261;
+  background: rgba(0,0,0,0.03);
+}
+
+.meeting__btn[disabled]{
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.meeting__status{
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: rgba(0,0,0,0.70);
+}
+
+/* hide honeypot */
+.hp{
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+
+/* Scroll reveal (reversible) */
+.meeting [data-reveal],
+.meeting__card{
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+  will-change: opacity, transform;
+}
+
+.meeting.is-inview .meeting__card{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.meeting.is-inview [data-reveal="title"]{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.meeting.is-inview .meeting__title::after{
+  width: 150px;
+}
+
+@media (max-width: 980px){
+  .meeting__card{ grid-template-columns: 1fr; }
+  .meeting__formWrap{ padding: 34px 22px; }
+  .fieldRow{ grid-template-columns: 1fr; }
+  .meeting__btn { width: 100%; }
+  .meeting { padding: 90px 0px 0px 0px;}
+}

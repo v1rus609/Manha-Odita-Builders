@@ -7,8 +7,12 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-
- <link rel="stylesheet" href="map.css" />
+  
+  
+  <link rel="stylesheet" href="float-actions.css" />
+  <link rel="stylesheet" href="footer.css" />
+  <link rel="stylesheet" href="meeting.css" />
+  <link rel="stylesheet" href="map.css" />
   <link rel="stylesheet" href="projects.css" />
   <link rel="stylesheet" href="poster-hero.css" />
   <link rel="stylesheet" href="hero.css" />
@@ -80,8 +84,8 @@
         <p class="hero__eyebrow">Manha Odita Builders</p>
 
         <h1 class="hero__title">
-          PREMIUM LIVING,<br />
-          BUILT WITH TRUST.
+          <span class="bold">PREMIUM</span><span class="light"> LIVING,<br />
+          BUILT WITH </span><span class="bold">TRUST.</span>
         </h1>
 
         <p class="hero__subtitle">
@@ -100,8 +104,8 @@
 <section class="poster-hero" id="posterHero">
   <div class="poster-hero__inner">
     <h2 class="poster-hero__title">
-      A NEW STANDARD OF<br />
-      PREMIUM LIVING
+      <span class="light">A NEW</span><span class="bold"> STANDARD</span><span class="light"> OF<br/></span><span class="bold">
+      PREMIUM</span><span class="light"> LIVING</span>
     </h2>
   <div class="hero__stats" id="heroStats">
   <div class="stat">
@@ -215,7 +219,7 @@
 <section class="map-section" id="locations">
   <div class="map__inner">
     <div class="map__head">
-      <h2 class="map__title" data-reveal="title">PROJECT LOCATIONS</h2>
+      <h2 class="map__title" data-reveal="title"><span class="light">PROJECT</span><span class="bold"> LOCATIONS</span></h2>
       <p class="map__sub" data-reveal="sub">Explore where our developments are located across Dhaka.</p>
     </div>
 
@@ -276,15 +280,220 @@
   </div>
 </section>
 
+<section class="meeting" id="meeting">
+  <div class="meeting__inner">
+
+    <div class="meeting__card">
+<div class="meeting__media">
+  <!-- Sun behind -->
+  <img
+    class="meeting__sun"
+    src="assets/sun.png"
+    alt=""
+    aria-hidden="true"
+    loading="lazy"
+    decoding="async"
+  >
+
+  <!-- Main image on top -->
+  <img
+    class="meeting__photo"
+    src="assets/meeting.png"
+    alt="Project lifestyle view"
+    loading="lazy"
+    decoding="async"
+  >
+</div>
+
+
+      <div class="meeting__formWrap">
+        <h2 class="meeting__title" data-reveal="title"><span class="light">SCHEDULE A</span><span class="bold"> MEETING</span></h2>
+
+        <form class="meeting__form" id="meetingForm">
+          <!-- honeypot anti-spam (keep hidden) -->
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" />
+
+          <label class="field">
+            <span class="field__label">Full Name*</span>
+            <input type="text" name="from_name" placeholder="Full Name*" required />
+          </label>
+
+          <label class="field">
+            <span class="field__label">Phone Number*</span>
+            <input type="tel" name="phone" placeholder="Phone Number*" required />
+          </label>
+
+          <label class="field">
+            <span class="field__label">Email Address</span>
+            <input type="email" name="reply_to" placeholder="Email Address" />
+          </label>
+
+          <div class="fieldRow">
+            <label class="field">
+              <span class="field__label">Preferred Date</span>
+              <input type="date" name="date" />
+            </label>
+
+            <label class="field">
+              <span class="field__label">Select a Time</span>
+              <select name="time">
+                <option value="">Select a Time</option>
+                <option>10:00 AM</option>
+                <option>12:00 PM</option>
+                <option>02:00 PM</option>
+                <option>04:00 PM</option>
+                <option>06:00 PM</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="field__label">Message (optional)</span>
+            <textarea name="message" rows="4" placeholder="Tell us what you’re looking for..."></textarea>
+          </label>
+
+          <button class="meeting__btn" type="submit" id="meetingBtn">Submit</button>
+          <p class="meeting__status" id="meetingStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <!-- Next sections will go here -->
 
   </main>
+  <footer class="footer footer--image" id="siteFooter">
+  <!-- Background image layer -->
+  <div class="footer__bg" aria-hidden="true"></div>
+  <div class="footer__shade" aria-hidden="true"></div>
+
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand footer__reveal">
+        <a class="footer__brandLink" href="index.html" aria-label="Go to home">
+          <img class="footer__logo" src="logo.png" alt="Manha Odita Builders">
+        </a>
+        <p class="footer__tagline">Premium living, built with trust.</p>
+
+        <div class="footer__miniLine" aria-hidden="true"></div>
+      </div>
+
+      <div class="footer__cols">
+        <!-- Contact -->
+        <div class="footer__col footer__reveal">
+          <h3 class="footer__heading"><span>Contact</span></h3>
+
+          <a class="footer__link" href="tel:+8801678666444"><span class="light">
+            Hotline: </span><span class="bold">16760</span>
+          </a><br>
+
+          <a class="footer__link" href="tel:+8801678666444"><span class="light">
+		  Sales: </span><span class="bold">+88 01678666444</span>
+          </a><br>
+
+          <a class="footer__link" href="mailto:hello@manhaoditabuilders.com"><span class="light">
+            Email: </span><span class="bold">hello@manhaoditabuilders.com</span>
+          </a><br>
+        </div>
+
+        <!-- Address -->
+        <div class="footer__col footer__reveal">
+          <h3 class="footer__heading"><span>Office</span></h3>
+
+          <p class="footer__text">
+            House 00, Road 00,<br>
+            Gulshan, Dhaka 1212, Bangladesh
+          </p>
+
+          <a class="footer__link footer__link--accent"
+             target="_blank" rel="noopener"
+             href="https://www.google.com/maps?q=Gulshan+Dhaka">
+            View on Google Maps →
+          </a>
+        </div>
+
+        <!-- Social -->
+        <div class="footer__col footer__reveal">
+          <h3 class="footer__heading"><span>Follow</span></h3>
+
+          <div class="footer__social">
+            <a class="socialBtn" href="#" aria-label="Facebook">
+              <!-- FB -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.7V12h2.7V9.8c0-2.7 1.6-4.2 4-4.2 1.2 0 2.4.2 2.4.2v2.7h-1.4c-1.3 0-1.7.8-1.7 1.7V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/>
+              </svg>
+            </a>
+
+            <a class="socialBtn" href="#" aria-label="Instagram">
+              <!-- IG -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 2A1.8 1.8 0 1 0 13.8 12 1.8 1.8 0 0 0 12 10.2zM18.2 6.7a.9.9 0 1 1-.9-.9.9.9 0 0 1 .9.9z"/>
+              </svg>
+            </a>
+
+            <a class="socialBtn" href="#" aria-label="YouTube">
+              <!-- YT -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.5.4A3 3 0 0 0 2.4 7.2 31.5 31.5 0 0 0 2 12a31.5 31.5 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.4 7.5.4 7.5.4s5.8 0 7.5-.4a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 22 12a31.5 31.5 0 0 0-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"/>
+              </svg>
+            </a>
+
+            <a class="socialBtn" href="#" aria-label="LinkedIn">
+              <!-- IN -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.5 6.5A2 2 0 1 1 4.5 4.5a2 2 0 0 1 2 2zM4.8 20h3.4V9H4.8v11zM9.9 9h3.3v1.5h.1a3.6 3.6 0 0 1 3.2-1.7c3.4 0 4 2.2 4 5.1V20h-3.4v-5.1c0-1.2 0-2.7-1.7-2.7s-1.9 1.3-1.9 2.6V20H9.9V9z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__rule" aria-hidden="true"></div>
+
+    <div class="footer__bottom footer__reveal">
+      <p>© <span id="footerYear"></span> Manha Odita Builders. All Rights Reserved.</p>  
+	  <span class="credit">Designed & Developed by<a href="https://thebyte.digital/"><img class="byte__logo" src="byte.png" alt="Byte Digital" style="width: 40px;height: 20px;"></a></span> 
+	  
+    </div>
 	
-	<script src="map.js" defer></script>
+  </div>
+</footer>
+
+	<div class="float-actions" aria-label="Quick contact">
+  <a class="fab fab--wa" href="#" aria-label="WhatsApp (dummy link)">
+    <!-- WhatsApp icon -->
+	<img class="fab__icon" src="whatsapp.png" alt="">
+    <span class="fab__tip">WhatsApp</span>
+  </a>
+
+  <a class="fab fab--ms" href="#" aria-label="Messenger (dummy link)">
+    <!-- Messenger icon -->
+    <img class="fab__icon" src="messenger.png" alt="">
+    <span class="fab__tip">Messenger</span>
+  </a>
+
+  <a class="fab fab--call" href="#" aria-label="Phone call (dummy link)">
+    <!-- Phone icon -->
+	<img class="fab__icon" src="phone.png" alt="">
+    <span class="fab__tip">Call</span>
+  </a>
+</div>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="footer.js" defer></script>
+  <script src="meeting.js" defer></script>
+  <script src="map.js" defer></script>
   <script src="projects.js" defer></script>
   <script src="poster-hero.js" defer></script>
   <script src="hero.js" defer></script>
   <script src="home.js" defer></script>
+  
+  
+  
 </body>
 </html>

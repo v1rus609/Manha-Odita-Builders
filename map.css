@@ -39,14 +39,18 @@
 
 /* Left list */
 .map__list {
+    display: flex;
     border-radius: 18px;
     overflow: hidden;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .mapItem {
     width: 100%;
     padding: 16px 16px;
     border: 0;
+    border-radius: 10px;
     background: transparent;
     color: #fff;
     cursor: pointer;
@@ -73,12 +77,12 @@
 }
 
 .mapItem:hover{
-  background: rgba(255,255,255,0.06);
+  background: rgb(101 101 101 / 14%);
   transform: translateX(3px);
 }
 
-.mapItem.is-active{
-  background: rgba(244,162,97,0.14);
+.mapItem.is-active {
+  background: rgb(189 189 189 / 14%);
 }
 
 .mapItem.is-active .mapItem__name{
@@ -155,7 +159,7 @@
 }
 
 .map-section.is-inview .map__title::after{
-  width: 250px;
+  width: 150px;
 }
 
 /* Reduced motion */
