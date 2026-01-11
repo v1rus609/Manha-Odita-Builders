@@ -90,7 +90,6 @@
 
 .hero__title{
   font-size: clamp(2.4rem, 4vw, 4rem);
-  font-weight: 800;
   line-height: 1.05;
   margin-bottom: 16px;
   text-align: center;
@@ -187,4 +186,12 @@
   .hero__title {
     text-align: left;
 }
+}
+
+.bold{
+    font-weight: 900;
+}
+
+.light{
+    font-weight: 100;
 }

@@ -2,21 +2,7 @@
 .meeting{
   position: relative;
   padding: 90px 0;
-  background: #fbfbfb;
   overflow: hidden;
-}
-
-/* subtle contour background */
-.meeting::before{
-  content:"";
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(244,162,97,0.08), transparent 55%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'%3E%3Cg fill='none' stroke='%239ad7ff' stroke-opacity='0.35' stroke-width='1'%3E%3Cpath d='M-20 60 C 120 10, 260 120, 420 70 S 720 120, 860 60'/%3E%3Cpath d='M-40 130 C 140 80, 280 190, 440 140 S 740 190, 900 130'/%3E%3Cpath d='M-30 210 C 130 160, 270 270, 430 220 S 730 270, 890 210'/%3E%3Cpath d='M-20 300 C 120 250, 260 360, 420 310 S 720 360, 860 300'/%3E%3Cpath d='M-40 390 C 140 340, 280 450, 440 400 S 740 450, 900 390'/%3E%3C/g%3E%3Cg fill='none' stroke='%239fe8b6' stroke-opacity='0.28' stroke-width='1'%3E%3Cpath d='M-30 95 C 140 40, 300 160, 480 100 S 760 160, 920 95'/%3E%3Cpath d='M-30 265 C 140 210, 300 330, 480 270 S 760 330, 920 265'/%3E%3Cpath d='M-30 435 C 140 380, 300 500, 480 440 S 760 500, 920 435'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: cover;
-  opacity: 0.55;
-  pointer-events: none;
 }
 
 .meeting__inner{
@@ -27,7 +13,6 @@
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     overflow: hidden;
-    background: #fff;
     align-items: center;
 }
 
