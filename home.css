@@ -88,8 +88,8 @@ body {
     align-items: center;
     height: var(--nav-h);
     padding: 20px 3rem;
-    background-color: #00000078;
-    backdrop-filter: blur(15px);
+    background-color: #000000ab;
+    backdrop-filter: blur(50px);
     box-shadow: 0 0 15px rgb(0 0 0 / 46%);
     color: #fff;
     position: fixed;
