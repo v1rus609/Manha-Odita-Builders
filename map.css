@@ -43,7 +43,7 @@
     border-radius: 18px;
     overflow: hidden;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .mapItem {
