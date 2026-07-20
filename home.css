@@ -117,7 +117,8 @@ body {
 
 /* Menu Icon Button */
 .menu-icon {
-  display: inline-flex;
+  display:none;
+  *display: inline-flex;
   flex-direction: column;
   justify-content: center;
   gap: 6px;

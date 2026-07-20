@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="projects.css" />
   <link rel="stylesheet" href="poster-hero.css" />
   <link rel="stylesheet" href="hero.css" />
-  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="home.css" />  <link rel="stylesheet" href="about.css" />
   
 
   <link rel="icon" type="image/png" href="icon.png" />
@@ -265,37 +265,61 @@
   </div>
 </section>
 
+<!-- MEETING & LAND PARTNER SECTION -->
 <section class="meeting" id="meeting">
   <div class="meeting__inner">
 
     <div class="meeting__card">
-<div class="meeting__media">
-  <!-- Sun behind -->
-  <img
-    class="meeting__sun"
-    src="assets/sun.png"
-    alt=""
-    aria-hidden="true"
-    loading="lazy"
-    decoding="async"
-  >
+      <div class="meeting__media">
+        <!-- Sun behind -->
+        <img
+          class="meeting__sun"
+          src="assets/sun.png"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+        >
 
-  <!-- Main image on top -->
-  <img
-    class="meeting__photo"
-    src="assets/meeting.png"
-    alt="Project lifestyle view"
-    loading="lazy"
-    decoding="async"
-  >
-</div>
-
+        <!-- Main image on top -->
+        <img
+          class="meeting__photo"
+          src="assets/meeting.png"
+          alt="Project lifestyle view"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
 
       <div class="meeting__formWrap">
-        <h2 class="meeting__title" data-reveal="title"><span class="light">SCHEDULE A</span><span class="bold"> MEETING</span></h2>
+        <h2 class="meeting__title" data-reveal="title">
+          <span class="light">SCHEDULE A</span><span class="bold"> MEETING</span>
+        </h2>
 
+        <!-- Become a Land Partner Box -->
+        <div class="land-partner-box">
+          <div class="land-partner-box__content">
+            <span class="land-partner-box__tag">Landowners & Investors</span>
+            <h3 class="land-partner-box__title">Become a Land Partner</h3>
+            <p class="land-partner-box__desc">
+              Have a plot in Dhaka? Call our development team directly to discuss joint venture opportunities.
+            </p>
+          </div>
+          <a class="land-partner-box__btn" href="tel:+8801618914404" aria-label="Call to become a land partner">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            <span>Call +880 1618-914404</span>
+          </a>
+        </div>
+
+        <div class="meeting__divider">
+          <span>or send us a message</span>
+        </div>
+
+        <!-- Meeting Form -->
         <form class="meeting__form" id="meetingForm">
-          <!-- honeypot anti-spam (keep hidden) -->
+          <!-- honeypot anti-spam -->
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" />
 
           <label class="field">
@@ -334,19 +358,92 @@
 
           <label class="field">
             <span class="field__label">Message (optional)</span>
-            <textarea name="message" rows="4" placeholder="Tell us what you’re looking for..."></textarea>
+            <textarea name="message" rows="3" placeholder="Tell us what you’re looking for..."></textarea>
           </label>
 
           <button class="meeting__btn" type="submit" id="meetingBtn">Submit</button>
           <p class="meeting__status" id="meetingStatus" aria-live="polite"></p>
         </form>
+
       </div>
     </div>
 
   </div>
 </section>
 
-    <!-- Next sections will go here -->
+<!-- ABOUT US SECTION -->
+<section class="about-section" id="about">
+  <div class="about__inner">
+    
+    <!-- Section Header -->
+    <div class="about__head">
+      <h2 class="about__title" data-reveal="title">
+        <span class="light">ABOUT</span><span class="bold"> US</span>
+      </h2>
+      <p class="about__sub" data-reveal="sub">
+        Shaping modern living through quality construction, thoughtful design, and trusted real estate solutions.
+      </p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="about__grid">
+      
+      <!-- Left Column: Company Story -->
+      <div class="about__story" data-reveal="left">
+        <div class="about__badge">Est. 2021 • Dhaka, Bangladesh</div>
+        <p class="about__text lead">
+          At Manha Odita Builders Limited, our company was founded with a clear vision: to become a name people can rely on for integrity, excellence, and long-term value in the real estate industry.
+        </p>
+        <p class="about__text">
+          Since the beginning of our journey, we have focused on building more than just properties—we build lasting relationships with our clients. Every project we undertake reflects our dedication to quality craftsmanship, transparent business practices, and customer satisfaction. We understand that buying or investing in real estate is one of life's most important decisions, and we strive to make that experience smooth, secure, and rewarding.
+        </p>
+        <p class="about__text">
+          Whether developing residential spaces or delivering tailored real estate solutions, our goal is to create environments that enhance the way people live and invest. We pay close attention to detail, use quality materials, and work with experienced professionals to ensure every project meets high standards of safety, functionality, and design.
+        </p>
+        <p class="about__text">
+          As a growing company, Manha Odita Builders Limited continues to embrace innovation while staying true to the values that define us—<strong>trust, professionalism, accountability, and a commitment to excellence</strong>. We believe that our success is built on the confidence of our clients, partners, and communities, and we remain dedicated to earning that trust with every project we complete.
+        </p>
+      </div>
+
+      <!-- Right Column: Mission & Vision Cards -->
+      <div class="about__cards" data-reveal="right">
+        
+        <!-- Mission Card -->
+        <div class="aboutCard">
+          <div class="aboutCard__icon" aria-hidden="true">
+            <!-- Target/Mission Icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="6"/>
+              <circle cx="12" cy="12" r="2"/>
+            </svg>
+          </div>
+          <h3 class="aboutCard__title">Our Mission</h3>
+          <p class="aboutCard__desc">
+            To deliver high-quality real estate developments that combine modern design, lasting value, and exceptional customer service while maintaining the highest standards of integrity and professionalism.
+          </p>
+        </div>
+
+        <!-- Vision Card -->
+        <div class="aboutCard">
+          <div class="aboutCard__icon" aria-hidden="true">
+            <!-- Eye/Vision Icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3 class="aboutCard__title">Our Vision</h3>
+          <p class="aboutCard__desc">
+            To become one of Bangladesh's most trusted and respected real estate companies by creating sustainable developments, building lasting relationships, and contributing to the growth of vibrant communities.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
 
   </main>
   <footer class="footer footer--image" id="siteFooter">
@@ -473,7 +570,7 @@
   <script src="poster-hero.js" defer></script>
   <script src="hero.js" defer></script>
   <script src="home.js" defer></script>
-  
+  <script src="about.js" defer></script>
   
   
 </body>
